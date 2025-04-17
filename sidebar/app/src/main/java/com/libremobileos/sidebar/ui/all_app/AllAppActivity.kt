@@ -6,9 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
-import androidx.compose.foundation.layout.padding
 import com.libremobileos.sidebar.bean.AppInfo
 import com.libremobileos.sidebar.ui.theme.SidebarTheme
 import com.libremobileos.sidebar.utils.Logger
@@ -36,9 +34,7 @@ class AllAppActivity: ComponentActivity() {
                 AllAppGridView(
                     viewModel = viewModel,
                     onClick = ::onClick,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(top = 24.dp)
+                    modifier = Modifier.fillMaxSize()
                 )
             }
         }

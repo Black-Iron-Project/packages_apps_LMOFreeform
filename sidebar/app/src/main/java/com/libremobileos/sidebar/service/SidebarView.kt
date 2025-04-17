@@ -38,7 +38,7 @@ class SidebarView(
     private val callback: Callback
 ) : SavedStateRegistryOwner {
 
-    private val lifecycleRegistry = LifecycleRegistry(this)
+    private var lifecycleRegistry = LifecycleRegistry(this)
     override val lifecycle get() = lifecycleRegistry
 
     private val savedStateRegistryController = SavedStateRegistryController.create(this)
@@ -81,7 +81,11 @@ class SidebarView(
 
     @SuppressLint("ClickableViewAccessibility")
     fun showView() {
-        if (isShowing || lifecycle.currentState == Lifecycle.State.DESTROYED) return
+        if (isShowing) return
+
+        if (lifecycle.currentState == Lifecycle.State.DESTROYED) {
+            lifecycleRegistry = LifecycleRegistry(this)
+        }
 
         initComposeView()
 
